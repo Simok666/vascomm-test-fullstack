@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//auth route for both 
-Route::group(['middleware' => ['auth']], function() { 
-    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+//auth route for admin
+Route::group(['middleware' => ['auth','role:admin']], function() { 
+    Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
+    Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
 });
 
 // for users
