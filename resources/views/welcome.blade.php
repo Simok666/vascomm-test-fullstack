@@ -25,7 +25,7 @@
     <body class="antialiased">
         <div class="relative flex flex-col items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="top-0 right-0 px-6 py-4 sm:block">
                     @auth
                      @if (Auth::user()->is_approval == 0) 
                         
@@ -70,6 +70,13 @@
                     @endauth
                 </div>
             @endif
+            
+            <div class="banner">
+              <div class="border"> </div>
+              <h2>The Darjeeling Limited</h2>
+              <p>by Wes Anderson</span></p>
+              <div class="border border-bottom"> </div>
+            </div>
 
             <div class="flex overflow-hidden">
             <div class="product">
